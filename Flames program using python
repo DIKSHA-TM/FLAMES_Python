@@ -1,0 +1,58 @@
+pip install ordered_set                                            #install orderedset library
+Name1 = input("Enter your name ").lower()
+Name2 = input("Enter your crush name ").lower()
+Name1 = Name1.replace(" ","")
+Name2 = Name2.replace(" ","")
+list_1=list(Name1)      
+list_2=list(Name2)      
+list_3=list(Name1)
+list_4=list(Name2)
+count=0
+empty=[]
+for i in list_1:
+    if(i in list_2):
+        list_2.remove(i)
+    else:
+        count+=1
+for i in list_4:
+    if(i in list_3):
+        list_3.remove(i)
+    else:
+        count+=1
+
+print("The count of different letters =",count)
+flames=list("flames")
+while(len(flames)>1):
+    if (count<=len(flames)):
+        flames.pop(count-1)
+        remaining_letters_1=flames[count-1:]
+        remaining_letters_2=flames[0:count-1]
+        flames=remaining_letters_1+remaining_letters_2
+    else:
+        for i in range(count):
+            for j in flames:
+                empty.append(j)
+        deleted_element=empty.pop(count-1)
+        remaining_letters_3=empty[count-1:]
+        remaining_letters_4=empty[0:count-1]
+        empty=remaining_letters_3+remaining_letters_4
+        for i in empty:
+            if(deleted_element == i):
+                empty.remove(i)
+                from ordered_set import OrderedSet
+                orderedset=OrderedSet(empty)
+                flames=list(orderedset)
+
+
+if(flames==list('f')):
+    print("your relationship with your crush {} is friend".format(Name2))
+if(flames==list('l')):
+    print("your relationship with your crush {} is love".format(Name2))
+if(flames==list('a')):
+    print("your relationship with your crush {} is affection".format(Name2))
+if(flames==list('m')):
+    print("your relationship with your crush {} is marriage".format(Name2))
+if(flames==list('e')):
+    print("your relationship with your crush {} is enemy".format(Name2))
+if(flames==list('s')):
+    print("your relationship with your crush {} is sister".format(Name2))
